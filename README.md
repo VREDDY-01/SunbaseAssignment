@@ -1,34 +1,142 @@
-# Getting Started with Customer Crud App
 
-This project was bootstrapped with [React](https://github.com/facebook/create-react-app) and [SpringBoot](https://springhttps://spring.io/).
+# Customer Management CRUD Application
 
-## FrontEnd Scripts
+This is a simple CRUD application for managing customer information with Spring Boot as the backend and basic react for the frontend.
 
-In the project directory /sunbase-frontend, you can run:
+## Getting Started
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Java
+- Maven
+- MySQL
+- SpringBoot
+- Hibernat
+- React
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Installation
 
-### Routes - /, /customers, /addCustomer, /customer/:id\
-### Components - LoginForm, CustomersList, EditForm
+1. **Clone the Repository:**
 
-## Backend Scripts
+    ```bash
+    git clone https://github.com/VREDDY-01/SunbaseAssignment
+    cd sunbaseAssignment
+    ```
 
-In the project directory /sunbase, you can follow below steps:
+2. **Backend Setup:**
 
-Step 1: Open the sunbase directory in intellij/Any other suitable editor.\
-Step 2: Navigate to sunbase/src/main/java/com/vishnu/sunbase/SunbaseApplication.java.\
-Step 3: Run the main method of the SunbaseApplication class.\
-Step 4: Open [http://localhost:8080](http://localhost:8080) to check the status of the server.
+    - Open `src/main/resources/application.properties` and configure your MySQL database settings.
+    
+    - Build and run the Spring Boot application:
 
-Models: Customer(id, firstName, lastName, email, address, street, city, state, phone)\
-Service: CustomerService(addCustomer, editCustomer, getCustomers, getCustometById, deleteCustomer)\
-Repository: ICustomerRepo
+        ```bash
+        mvn spring-boot:run
+        ```
+
+3. **Frontend Setup:**
+
+    - Navigate to the `sunbase-frontend` directory:
+
+        ```bash
+        cd sunbase-frontend
+        ```
+
+    - Install dependencies:
+
+        ```bash
+        npm install
+        ```
+
+    - Run the frontend:
+
+        ```bash
+        npm start
+        ```
+
+4. **Access the Application:**
+
+    - Open your browser and go to [http://localhost:3000](http://localhost:3000)
+
+## API Endpoints
+
+### Create a Customer
+
+- **Endpoint:** `/customers`
+- **Method:** `POST`
+- **Request Body:**
+  
+    ```json
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "street": "Elvnu Street",
+        "address": "H no 2",
+        "city": "Delhi",
+        "state": "Delhi",
+        "email": "sam@gmail.com",
+        "phone": "12345678"
+    }
+    ```
+
+### Update a Customer
+
+- **Endpoint:** `/customers/{customerId}`
+- **Method:** `PUT`
+- **Request Body:**
+
+    ```json
+    {
+        "firstName": "vishnu",
+        "lastName": "Teja",
+        "street": "new street",
+        "address": " H no 1",
+        "city": "New Delhi",
+        "state": "New Delhi",
+        "email": "new@gmail.com",
+        "phone": "981635527"
+    }
+    ```
+
+### Get a List of Customers
+
+- **Endpoint:** `/customers`
+- **Method:** `GET`
+- **Parameters:**
+  - `page` (Pagination)
+  - `size` (Pagination)
+  - `sort` (Sorting)
+  - `search` (Searching)
+
+### Get a Single Customer
+
+- **Endpoint:** `/customers/{customerId}`
+- **Method:** `GET`
+
+### Delete a Customer
+
+- **Endpoint:** `/customers/{customerId}`
+- **Method:** `DELETE`
+
+### Authentication
+
+  
+    ```json
+    {
+        "login_id": ashok
+        "password": 12345
+    }
+    ```
+
+    The response will contain a Bearer token which you need to pass in subsequent API calls.
 
 
+## Sync Data from Remote API
 
+- **Endpoint:** `/sync`
+- **Method:** `GET`
+
+   This endpoint will call the remote API to fetch customer data and save/update it in your local database.
+
+## Contributors
+
+- K Vishnu Teja
